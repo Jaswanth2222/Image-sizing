@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    <style>
+
+        .bg-container{
+            padding-top: 40px;
+            background-color: #f5f7fa;
+            height: 100vh;
+
+        }
+
+        .image-heading{
+            font-size: 50px;
+            font-weight: normal;
+
+        }
+
+        .image-sizing-description{
+            font-size: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .img-style{
+            width: 200px;
+        }
+        
+        .width-spec{
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 500;
+
+        }
+        .btn-style{
+            border: none;
+            background-color: white;
+            font-size: 26px;
+            font-weight: 500;
+        }
+
+        .btn-container{
+            font-size: 26px;
+            font-weight: 500;
+            background-color: white;
+            width: 170px;
+            height: 45px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-container text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <h1 class="image-heading">
+                        Sizing an Image
+                    </h1>
+                    <p class="image-sizing-description">Increase the width of an image by clicking the plus button and decrease by clicking the Minus button. For every action, the image increases or decreases by 5px.</p>
+                </div>
+
+                <div class="col-12 col-lg-6 text-center">
+                    <p class="image-visible-text" id = 'imageVisibleText'></p>
+                    <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/sizing-an-image-img.png" alt="" class="img-style " id="imgWidth">
+                    <p class="width-spec" id="widthSpec"></p>
+                    <div id="imageShowWidth"></div>
+                </div>
+                <div class="col-12 text-center btn-container">
+                    <button class="btn-style minus-button" onclick="onDecrease()">-</button>
+                    <span class=""> | 5px | </span>
+                    <button class="btn-style minus-button" onclick="onIncrease()">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let imgWidth = document.getElementById('imgWidth');
+       let imageVisibleText = document.getElementById('imageVisibleText');
+        let widthSpec = document.getElementById("widthSpec");
+        
+        let updatedWidth = 200;
+
+        
+        function onDecrease(){
+            if(updatedWidth <= 100){
+                imageVisibleText.textContent = "Image is not visible.. Increase the size of the Image"
+            }else{
+                let imageShowWidth = document.getElementById("imagShowWidth");
+                updatedWidth = updatedWidth - 5;
+                widthSpec = updatedWidth;
+                imgWidth.style.width = widthSpec+"px";
+                widthSpec.textContent = widthSpec+"px";
+            }
+        }
+
+        function onIncrease(){
+            if(updatedWidth >= 300){
+                imageVisibleText.textContent = "Image is too big.. Decrease the size of the Image"
+            }else{
+                let imageShowWidth = document.getElementById("imageShowWidth");
+                updatedWidth = updatedWidth + 5;
+                widthSpec = updatedWidth;
+                imgWidth.style.width = widthSpec+"px";
+                widthSpec.textContent = widthSpec+"px";
+            }
+        }
+        
+    </script>
+</body>
+</html>
